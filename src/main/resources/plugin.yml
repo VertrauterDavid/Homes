@@ -1,0 +1,10 @@
+name: Homes
+version: 1.0
+api-version: 1.19
+main: net.vertrauterdavid.homes.Homes
+author: VertrauterDavid
+website: https://vertrauterdavid.net/ & https://github.com/vertrauterdavid/
+
+commands:
+  homes:
+  home:

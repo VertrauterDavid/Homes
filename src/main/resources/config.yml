@@ -1,0 +1,74 @@
+# ---------------------------------------------------------------------------
+#
+#         Developed by VertrauterDavid
+#
+#         https://vertrauterdavid.net/
+#         https://github.com/VertrauterDavid/
+#
+# ---------------------------------------------------------------------------
+
+Sql:
+  Host: "localhost"
+  Port: "3306"
+  Database: "homes"
+  Username: ""
+  Password: ""
+
+Messages:
+  Prefix: "&8 | &#559effHomes &8» &7"
+  Set: "Home was set successfully!"
+  Delete: "Home was deleted successfully!"
+  NotYet: "Home has not been set yet!"
+  NoPermission: "You don't have permission to use this Home!"
+
+Settings:
+  MaxHomes: 7 # possible: 5 or 7
+
+Gui:
+  Title: "&#559effHomes"
+  Rows: 3 # possible: 3 or 5
+  Items:
+    Set:
+      Material: "BLUE_BED"
+      Name: "&aHome %home%"
+      Lore:
+        - "&7Left-Click to teleport"
+        - "&7Right-Click to delete"
+    UnSet:
+      Material: "WHITE_BED"
+      Name: "&7Home %home%"
+      Lore:
+        - "&7Click to set"
+    NoPermission:
+      Material: "BARRIER"
+      Name: "You can't use this Home!"
+      Lore: []
+
+DeleteGui:
+  Enabled: true
+  Title: "&#559effDelete Home"
+  Rows: 3 # possible: 3 or 5
+  Items:
+    Confirm:
+      Material: "LIME_WOOL"
+      Name: "&aConfirm"
+      Lore: []
+    Cancel:
+      Material: "RED_WOOL"
+      Name: "&cCancel"
+      Lore: []
+
+GuiSounds:
+  OpenSound: "ENTITY_CHICKEN_EGG"
+  SuccessSound: "ENTITY_PLAYER_LEVELUP"
+  ErrorSound: "BLOCK_ANVIL_LAND"
+
+Teleport:
+  CoolDown: 5 # 0 = disabled
+  Message: "You will be teleported in &a%seconds% &7seconds!" # empty = disabled
+  Actionbar: "&7You will be teleported in &a%seconds% &7seconds!" # empty = disabled
+  Title: # empty = disabled
+    Title: "&a%seconds%" # 1st row
+    SubTitle: "" # 2nd row
+  CoolDownSound: "BLOCK_NOTE_BLOCK_PLING" # empty = disabled
+  TeleportSound: "ENTITY_PLAYER_LEVELUP" # empty = disabled
