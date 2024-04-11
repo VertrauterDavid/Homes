@@ -29,6 +29,7 @@ public class Homes extends JavaPlugin {
     private ItemUtil unSetItem;
     private ItemUtil noPermissionItem;
     private ItemUtil confirmItem;
+    private ItemUtil bedItem;
     private ItemUtil cancelItem;
 
     @Override
@@ -46,6 +47,7 @@ public class Homes extends JavaPlugin {
         unSetItem = getConfigItem("Gui.Items.UnSet");
         noPermissionItem = getConfigItem("Gui.Items.NoPermission");
         confirmItem = getConfigItem("DeleteGui.Items.Confirm");
+        bedItem = getConfigItem("DeleteGui.Items.Bed");
         cancelItem = getConfigItem("DeleteGui.Items.Cancel");
 
         Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
@@ -75,7 +77,10 @@ public class Homes extends JavaPlugin {
     public void openDeleteInventory(Player player, int home) {
         Inventory inventory = Bukkit.createInventory(null, getConfig().getInt("DeleteGui.Rows", 3) * 9, ConfigUtil.translateColorCodes(getConfig().getString("DeleteGui.Title", "Homes")) + " " + home);
 
-        inventory.setItem(getConfig().getInt("DeleteGui.Items.Confirm.Slot", 13), confirmItem.toItemStack());
+        inventory.setItem(getConfig().getInt("DeleteGui.Items.Confirm.Slot", 11), confirmItem.toItemStack());
+        if (getConfig().getBoolean("DeleteGui.Items.Bed.Enabled", true)) {
+            inventory.setItem(getConfig().getInt("DeleteGui.Items.Bed.Slot", 13), getBedItem(home));
+        }
         inventory.setItem(getConfig().getInt("DeleteGui.Items.Cancel.Slot", 15), cancelItem.toItemStack());
 
         player.openInventory(inventory);
@@ -99,6 +104,10 @@ public class Homes extends JavaPlugin {
 
     private ItemStack getNoPermissionItem(int home) {
         return new ItemUtil(noPermissionItem).setName(noPermissionItem.getItemMeta().getDisplayName().replaceAll("%home%", String.valueOf(home))).toItemStack();
+    }
+
+    private ItemStack getBedItem(int home) {
+        return new ItemUtil(bedItem).setName(bedItem.getItemMeta().getDisplayName().replaceAll("%home%", String.valueOf(home))).toItemStack();
     }
 
     public int getAmount(Player player) {
