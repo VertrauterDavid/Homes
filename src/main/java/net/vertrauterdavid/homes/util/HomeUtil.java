@@ -14,6 +14,21 @@ public class HomeUtil {
 
     private final HashMap<String, String> localStorage = new HashMap<>();
 
+    public HomeUtil() {
+        ResultSet resultSet = Homes.getInstance().getSqlUtil().getResult("SELECT * FROM Homes");
+        try {
+            while (resultSet.next()) {
+                localStorage.put(resultSet.getString("UUID") + "-1", resultSet.getString("Home1"));
+                localStorage.put(resultSet.getString("UUID") + "-2", resultSet.getString("Home2"));
+                localStorage.put(resultSet.getString("UUID") + "-3", resultSet.getString("Home3"));
+                localStorage.put(resultSet.getString("UUID") + "-4", resultSet.getString("Home4"));
+                localStorage.put(resultSet.getString("UUID") + "-5", resultSet.getString("Home5"));
+                localStorage.put(resultSet.getString("UUID") + "-6", resultSet.getString("Home6"));
+                localStorage.put(resultSet.getString("UUID") + "-7", resultSet.getString("Home7"));
+            }
+        } catch (Exception ignored) { }
+    }
+
     public void loadLocal(UUID uuid) {
         ResultSet resultSet = Homes.getInstance().getSqlUtil().getResult("SELECT * FROM Homes WHERE UUID='" + uuid.toString() + "'");
         try {
