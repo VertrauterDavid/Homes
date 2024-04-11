@@ -18,7 +18,7 @@ public class TeleportUtil {
     public static void teleport(Player player, Location location) {
         player.closeInventory();
 
-        if (Homes.getInstance().getConfig().getInt("Teleport.CoolDown") < 1) {
+        if (Homes.getInstance().getConfig().getInt("Teleport.CoolDown") < 1 || player.hasPermission("home.bypass")) {
             player.teleport(location);
             ConfigUtil.playSound(player, "Teleport.TeleportSound");
             return;
