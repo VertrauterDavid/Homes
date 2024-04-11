@@ -14,6 +14,8 @@
 4. Setup SQL in `plugins/Homes/config.yml`
 5. Restart your server (not reload)
 
+**The config.yml may not be overwritten directly when downloading a newer version. Backup it first, delete it and then add your settings**
+
 <hr>
 
 <details>
