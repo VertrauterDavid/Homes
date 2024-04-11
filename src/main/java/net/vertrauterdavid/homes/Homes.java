@@ -7,7 +7,6 @@ import net.vertrauterdavid.homes.listener.PlayerJoinListener;
 import net.vertrauterdavid.homes.util.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
