@@ -5,13 +5,15 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.vertrauterdavid.homes.Homes;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 public class TeleportUtil {
+
+    private static final HashMap<UUID, Location> move = new HashMap<>();
 
     public static void teleport(Player player, Location location) {
         player.closeInventory();
@@ -22,6 +24,8 @@ public class TeleportUtil {
             return;
         }
 
+        move.put(player.getUniqueId(), player.getLocation());
+
         final int[] seconds = {6};
         UUID uuid = player.getUniqueId();
         new BukkitRunnable() {
@@ -30,8 +34,23 @@ public class TeleportUtil {
                 seconds[0]--;
 
                 if (Bukkit.getPlayer(uuid) == null) {
+                    move.remove(player.getUniqueId());
                     this.cancel();
                     return;
+                }
+
+                if (Homes.getInstance().getConfig().getBoolean("Teleport.CancelOnMove")) {
+                    Location moveLocation = move.get(player.getUniqueId());
+                    if (moveLocation != null && moveLocation.distance(player.getLocation()) > Homes.getInstance().getConfig().getDouble("Teleport.MaximumMoveDistance")) {
+                        player.sendMessage(ConfigUtil.getPrefix() + ConfigUtil.getMessage("Teleport.CancelMessage"));
+                        if (!(Homes.getInstance().getConfig().getString("Teleport.CancelTitle.Title").equalsIgnoreCase("")) || !(Homes.getInstance().getConfig().getString("Teleport.CancelTitle.SubTitle").equalsIgnoreCase(""))) {
+                            player.sendTitle(ConfigUtil.getMessage("Teleport.CancelTitle.Title"), ConfigUtil.getMessage("Teleport.CancelTitle.SubTitle"));
+                        }
+                        ConfigUtil.playSound(player, "Teleport.CancelSound");
+                        move.remove(player.getUniqueId());
+                        this.cancel();
+                        return;
+                    }
                 }
 
                 switch (seconds[0]) {
@@ -50,6 +69,7 @@ public class TeleportUtil {
                     case 0 -> {
                         player.teleport(location);
                         ConfigUtil.playSound(player, "Teleport.CoolDownSound");
+                        move.remove(player.getUniqueId());
                         this.cancel();
                     }
                 }

@@ -80,3 +80,10 @@ Teleport:
     SubTitle: "" # 2nd row
   CoolDownSound: "BLOCK_NOTE_BLOCK_PLING" # empty = disabled
   TeleportSound: "ENTITY_PLAYER_LEVELUP" # empty = disabled
+  CancelOnMove: true
+  CancelTitle:
+    Title: "&cTeleportation canceled!"
+    SubTitle: "&7You moved!"
+  MaximumMoveDistance: 0.3
+  CancelMessage: "Teleportation was canceled because you moved!"
+  CancelSound: "BLOCK_ANVIL_LAND" # empty = disabled
