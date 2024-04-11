@@ -5,6 +5,8 @@ import net.vertrauterdavid.homes.command.HomeCommand;
 import net.vertrauterdavid.homes.listener.InventoryClickListener;
 import net.vertrauterdavid.homes.listener.PlayerJoinListener;
 import net.vertrauterdavid.homes.util.*;
+import net.vertrauterdavid.homes.util.plugin.StatisticUtil;
+import net.vertrauterdavid.homes.util.plugin.VersionUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -34,6 +36,7 @@ public class Homes extends JavaPlugin {
         saveDefaultConfig();
 
         instance = this;
+        new StatisticUtil(this);
         versionUtil = new VersionUtil();
         sqlUtil = new SqlUtil(getConfig().getString("Sql.Host"), getConfig().getString("Sql.Port"), getConfig().getString("Sql.Database"), getConfig().getString("Sql.Username"), getConfig().getString("Sql.Password"));
         sqlUtil.update("CREATE TABLE IF NOT EXISTS Homes (UUID VARCHAR(100) NOT NULL, Home1 VARCHAR(100) NOT NULL DEFAULT '-', Home2 VARCHAR(100) NOT NULL DEFAULT '-', Home3 VARCHAR(100) NOT NULL DEFAULT '-', Home4 VARCHAR(100) NOT NULL DEFAULT '-', Home5 VARCHAR(100) NOT NULL DEFAULT '-', Home6 VARCHAR(100) NOT NULL DEFAULT '-', Home7 VARCHAR(100) NOT NULL DEFAULT '-');");

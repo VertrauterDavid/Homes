@@ -1,4 +1,4 @@
-package net.vertrauterdavid.homes.util;
+package net.vertrauterdavid.homes.util.plugin;
 
 import net.vertrauterdavid.homes.Homes;
 import org.bukkit.Bukkit;
