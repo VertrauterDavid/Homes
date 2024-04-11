@@ -59,9 +59,9 @@ DeleteGui:
       Lore: []
 
 GuiSounds:
-  OpenSound: "ENTITY_CHICKEN_EGG"
-  SuccessSound: "ENTITY_PLAYER_LEVELUP"
-  ErrorSound: "BLOCK_ANVIL_LAND"
+  OpenSound: "ENTITY_CHICKEN_EGG" # empty = disabled
+  SuccessSound: "ENTITY_PLAYER_LEVELUP" # empty = disabled
+  ErrorSound: "BLOCK_ANVIL_LAND" # empty = disabled
 
 Teleport:
   CoolDown: 5 # 0 = disabled

@@ -55,7 +55,7 @@ public class Homes extends JavaPlugin {
 
     public void openInventory(Player player) {
         int maxHomes = getConfig().getInt("Settings.MaxHomes", 5);
-        Inventory inventory = Bukkit.createInventory(null, getConfig().getInt("Gui.Rows", 3) * 9, MessageUtil.translateColorCodes(getConfig().getString("Gui.Title", "Homes")));
+        Inventory inventory = Bukkit.createInventory(null, getConfig().getInt("Gui.Rows", 3) * 9, ConfigUtil.translateColorCodes(getConfig().getString("Gui.Title", "Homes")));
 
         for (int i = 1; i <= maxHomes; i++) {
             int slot = i + (maxHomes == 5 ? 1 : 0) + (inventory.getSize() == 27 ? 9 : 18);
@@ -67,24 +67,24 @@ public class Homes extends JavaPlugin {
         }
 
         player.openInventory(inventory);
-        player.playSound(player.getLocation(), Sound.valueOf(getConfig().getString("GuiSounds.OpenSound")), 5, 5);
+        ConfigUtil.playSound(player, "GuiSounds.OpenSound");
     }
 
     public void openDeleteInventory(Player player, int home) {
-        Inventory inventory = Bukkit.createInventory(null, getConfig().getInt("DeleteGui.Rows", 3) * 9, MessageUtil.translateColorCodes(getConfig().getString("DeleteGui.Title", "Homes")) + " " + home);
+        Inventory inventory = Bukkit.createInventory(null, getConfig().getInt("DeleteGui.Rows", 3) * 9, ConfigUtil.translateColorCodes(getConfig().getString("DeleteGui.Title", "Homes")) + " " + home);
 
         inventory.setItem(3 + (inventory.getSize() == 27 ? 9 : 18), confirmItem.toItemStack());
         inventory.setItem(5 + (inventory.getSize() == 27 ? 9 : 18), cancelItem.toItemStack());
 
         player.openInventory(inventory);
-        player.playSound(player.getLocation(), Sound.valueOf(getConfig().getString("GuiSounds.OpenSound")), 5, 5);
+        ConfigUtil.playSound(player, "GuiSounds.OpenSound");
     }
 
     private ItemUtil getConfigItem(String path) {
-        Material material = Material.valueOf(MessageUtil.translateColorCodes(getConfig().getString(path + ".Material")));
-        String name = MessageUtil.translateColorCodes(getConfig().getString(path + ".Name"));
+        Material material = Material.valueOf(ConfigUtil.translateColorCodes(getConfig().getString(path + ".Material")));
+        String name = ConfigUtil.translateColorCodes(getConfig().getString(path + ".Name"));
         List<String> lore = getConfig().getStringList(path + ".Lore");
-        return new ItemUtil(material).setName(name).setLore(lore.stream().map(MessageUtil::translateColorCodes).toArray(String[]::new));
+        return new ItemUtil(material).setName(name).setLore(lore.stream().map(ConfigUtil::translateColorCodes).toArray(String[]::new));
     }
 
     private ItemStack getSetItem(int home) {

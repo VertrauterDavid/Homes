@@ -1,7 +1,7 @@
 package net.vertrauterdavid.homes.listener;
 
 import net.vertrauterdavid.homes.Homes;
-import net.vertrauterdavid.homes.util.MessageUtil;
+import net.vertrauterdavid.homes.util.ConfigUtil;
 import net.vertrauterdavid.homes.util.TeleportUtil;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -24,7 +24,7 @@ public class InventoryClickListener implements Listener {
         Inventory inventory = event.getInventory();
         InventoryView view = event.getView();
 
-        if (view.getTitle().equalsIgnoreCase(MessageUtil.translateColorCodes(Homes.getInstance().getConfig().getString("Gui.Title", "Homes")))) {
+        if (view.getTitle().equalsIgnoreCase(ConfigUtil.translateColorCodes(Homes.getInstance().getConfig().getString("Gui.Title", "Homes")))) {
             event.setCancelled(true);
 
             int maxHomes = Homes.getInstance().getConfig().getInt("Settings.MaxHomes", 5);
@@ -33,13 +33,13 @@ public class InventoryClickListener implements Listener {
                 if (event.getRawSlot() == slot) {
                     if (event.getClick() == ClickType.LEFT) {
                         if (Homes.getInstance().getAmount(player) < i) {
-                            player.sendMessage(MessageUtil.getPrefix() + MessageUtil.get("Messages.NoPermission"));
-                            player.playSound(player.getLocation(), Sound.valueOf(Homes.getInstance().getConfig().getString("GuiSounds.ErrorSound")), 5, 5);
+                            player.sendMessage(ConfigUtil.getPrefix() + ConfigUtil.getMessage("Messages.NoPermission"));
+                            ConfigUtil.playSound(player, "GuiSounds.ErrorSound");
                         } else if (Homes.getInstance().getHomeUtil().get(player.getUniqueId(), i) == null) {
                             Homes.getInstance().getHomeUtil().set(player.getUniqueId(), i, player.getLocation());
                             Homes.getInstance().openInventory(player);
-                            player.sendMessage(MessageUtil.getPrefix() + MessageUtil.get("Messages.Set"));
-                            player.playSound(player.getLocation(), Sound.valueOf(Homes.getInstance().getConfig().getString("GuiSounds.SuccessSound")), 5, 5);
+                            player.sendMessage(ConfigUtil.getPrefix() + ConfigUtil.getMessage("Messages.Set"));
+                            ConfigUtil.playSound(player, "GuiSounds.SuccessSound");
                         } else {
                             TeleportUtil.teleport(player, Homes.getInstance().getHomeUtil().get(player.getUniqueId(), i));
                         }
@@ -50,8 +50,8 @@ public class InventoryClickListener implements Listener {
                             } else {
                                 Homes.getInstance().getHomeUtil().delete(player.getUniqueId(), i);
                                 Homes.getInstance().openInventory(player);
-                                player.sendMessage(MessageUtil.getPrefix() + MessageUtil.get("Messages.Delete"));
-                                player.playSound(player.getLocation(), Sound.valueOf(Homes.getInstance().getConfig().getString("GuiSounds.SuccessSound")), 5, 5);
+                                player.sendMessage(ConfigUtil.getPrefix() + ConfigUtil.getMessage("Messages.Delete"));
+                                ConfigUtil.playSound(player, "GuiSounds.SuccessSound");
                             }
                         }
                     }
@@ -59,7 +59,7 @@ public class InventoryClickListener implements Listener {
             }
         }
 
-        if (view.getTitle().startsWith(MessageUtil.translateColorCodes(Homes.getInstance().getConfig().getString("DeleteGui.Title", "Homes")))) {
+        if (view.getTitle().startsWith(ConfigUtil.translateColorCodes(Homes.getInstance().getConfig().getString("DeleteGui.Title", "Homes")))) {
             event.setCancelled(true);
 
             try {
@@ -67,8 +67,8 @@ public class InventoryClickListener implements Listener {
                 if (event.getRawSlot() == 3 + (inventory.getSize() == 27 ? 9 : 18)) {
                     Homes.getInstance().getHomeUtil().delete(player.getUniqueId(), home);
                     Homes.getInstance().openInventory(player);
-                    player.sendMessage(MessageUtil.getPrefix() + MessageUtil.get("Messages.Delete"));
-                    player.playSound(player.getLocation(), Sound.valueOf(Homes.getInstance().getConfig().getString("GuiSounds.SuccessSound")), 5, 5);
+                    player.sendMessage(ConfigUtil.getPrefix() + ConfigUtil.getMessage("Messages.Delete"));
+                    ConfigUtil.playSound(player, "GuiSounds.SuccessSound");
                 } else if (event.getRawSlot() == 5 + (inventory.getSize() == 27 ? 9 : 18)) {
                     Homes.getInstance().openInventory(player);
                 }

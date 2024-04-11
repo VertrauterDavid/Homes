@@ -18,7 +18,7 @@ public class TeleportUtil {
 
         if (Homes.getInstance().getConfig().getInt("Teleport.CoolDown") < 1) {
             player.teleport(location);
-            player.playSound(player.getLocation(), Sound.valueOf(Homes.getInstance().getConfig().getString("Teleport.TeleportSound")), 5, 5);
+            ConfigUtil.playSound(player, "Teleport.TeleportSound");
             return;
         }
 
@@ -37,19 +37,19 @@ public class TeleportUtil {
                 switch (seconds[0]) {
                     case 5, 4, 3, 2, 1 -> {
                         if (!(Homes.getInstance().getConfig().getString("Teleport.Message").equalsIgnoreCase(""))) {
-                            player.sendMessage(MessageUtil.getPrefix() + MessageUtil.get("Teleport.Message").replaceAll("%seconds%", String.valueOf(seconds[0])));
+                            player.sendMessage(ConfigUtil.getPrefix() + ConfigUtil.getMessage("Teleport.Message").replaceAll("%seconds%", String.valueOf(seconds[0])));
                         }
                         if (!(Homes.getInstance().getConfig().getString("Teleport.Actionbar").equalsIgnoreCase(""))) {
-                            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(MessageUtil.get("Teleport.Actionbar").replaceAll("%seconds%", String.valueOf(seconds[0]))));
+                            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ConfigUtil.getMessage("Teleport.Actionbar").replaceAll("%seconds%", String.valueOf(seconds[0]))));
                         }
                         if (!(Homes.getInstance().getConfig().getString("Teleport.Title.Title").equalsIgnoreCase("")) || !(Homes.getInstance().getConfig().getString("Teleport.Title.SubTitle").equalsIgnoreCase(""))) {
-                            player.sendTitle(MessageUtil.get("Teleport.Title.Title").replaceAll("%seconds%", String.valueOf(seconds[0])), MessageUtil.get("Teleport.Title.SubTitle").replaceAll("%seconds%", String.valueOf(seconds[0])));
+                            player.sendTitle(ConfigUtil.getMessage("Teleport.Title.Title").replaceAll("%seconds%", String.valueOf(seconds[0])), ConfigUtil.getMessage("Teleport.Title.SubTitle").replaceAll("%seconds%", String.valueOf(seconds[0])));
                         }
-                        player.playSound(player.getLocation(), Sound.valueOf(Homes.getInstance().getConfig().getString("Teleport.CoolDownSound")), 5, 5);
+                        ConfigUtil.playSound(player, "Teleport.CoolDownSound");
                     }
                     case 0 -> {
                         player.teleport(location);
-                        player.playSound(player.getLocation(), Sound.valueOf(Homes.getInstance().getConfig().getString("Teleport.CoolDownSound")), 5, 5);
+                        ConfigUtil.playSound(player, "Teleport.CoolDownSound");
                         this.cancel();
                     }
                 }
