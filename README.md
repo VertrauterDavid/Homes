@@ -1,34 +1,53 @@
 # Homes
 
 [![download](https://img.shields.io/github/downloads/VertrauterDavid/Homes/total?style=for-the-badge)](https://github.com/VertrauterDavid/Homes/releases/latest)
+![license](https://img.shields.io/github/license/VertrauterDavid/Homes?style=for-the-badge)
+![stars](https://img.shields.io/github/stars/VertrauterDavid/Homes?style=for-the-badge)
+![forks](https://img.shields.io/github/forks/VertrauterDavid/Homes?style=for-the-badge)
 
-### Screenshots
-<img alt="1" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/1.png">
-<img alt="2" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/2.png">
-<img alt="3" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/3.png">
-<img alt="4" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/4.png">
+<hr>
 
+### Installation
+1. Download jar from [here](https://github.com/VertrauterDavid/Homes/releases/latest)
+2. Put the jar in your plugins folder
+3. Restart your server
+4. Setup SQL in `plugins/Homes/config.yml`
+5. Restart your server (not reload)
 
-### Commands
-| Command              | Action                 |
-|----------------------|:-----------------------|
-| `/homes` `/home`     | Open your Home Gui     |
-| `/home <1-7>`        |
-| `/home set <1-7>`    | Set a home directly    |
-| `/home delete <1-7>` | Delete a home directly |
-| `/home remove <1-7>` | Delete a home directly |
+<hr>
 
+<details>
+    <summary><h3 style="display: inline;">Screenshots</h3></summary>
+    <img alt="1" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/1.png">
+    <img alt="2" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/2.png">
+    <img alt="3" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/3.png">
+    <img alt="4" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/4.png">
+</details>
 
-### Admin Commands
-| Command                       |
-|-------------------------------|
-| `/home <player> <1-7>`        |
-| `/home <player> set <1-7>`    |
-| `/home <player> delete <1-7>` |
-| `/home <player> remove <1-7>` |
+<hr>
 
+<details>
+    <summary><h3 style="display: inline;">Commands</h3></summary>
 
-### Permissions
+| Command                       | Action                      | Permission |
+|-------------------------------|:----------------------------|------------|
+| `/homes` `/home`              | Open your Home Gui          |            |
+| `/home <1-7>`                 | Teleport to a home directly |            |
+| `/home set <1-7>`             | Set a home directly         |            |
+| `/home delete <1-7>`          | Delete a home directly      |            |
+| `/home remove <1-7>`          | Delete a home directly      |            |
+| `/home <player> <1-7>`        |                             | home.admin |
+| `/home <player> set <1-7>`    |                             | home.admin |
+| `/home <player> delete <1-7>` |                             | home.admin |
+| `/home <player> remove <1-7>` |                             | home.admin |
+
+</details>
+
+<hr>
+
+<details>
+    <summary><h3 style="display: inline;">Permissions</h3></summary>
+
 | Permissions  |                                                   |
 |--------------|:--------------------------------------------------|
 | `home.1`     | 1 Home                                            |
@@ -39,3 +58,5 @@
 | `home.6`     | 6 Home                                            |
 | `home.7`     | 7 Home                                            |
 | `home.admin` | Permission for `/homes <player>` `/home <player>` |
+
+</details>
