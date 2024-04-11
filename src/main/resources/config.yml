@@ -50,10 +50,12 @@ DeleteGui:
   Rows: 3 # possible: 3 or 5
   Items:
     Confirm:
+      Slot: 13
       Material: "LIME_WOOL"
       Name: "&aConfirm"
       Lore: []
     Cancel:
+      Slot: 15
       Material: "RED_WOOL"
       Name: "&cCancel"
       Lore: []

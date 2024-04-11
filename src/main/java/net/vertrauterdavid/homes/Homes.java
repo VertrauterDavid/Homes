@@ -73,8 +73,8 @@ public class Homes extends JavaPlugin {
     public void openDeleteInventory(Player player, int home) {
         Inventory inventory = Bukkit.createInventory(null, getConfig().getInt("DeleteGui.Rows", 3) * 9, ConfigUtil.translateColorCodes(getConfig().getString("DeleteGui.Title", "Homes")) + " " + home);
 
-        inventory.setItem(3 + (inventory.getSize() == 27 ? 9 : 18), confirmItem.toItemStack());
-        inventory.setItem(5 + (inventory.getSize() == 27 ? 9 : 18), cancelItem.toItemStack());
+        inventory.setItem(getConfig().getInt("DeleteGui.Items.Confirm.Slot", 13), confirmItem.toItemStack());
+        inventory.setItem(getConfig().getInt("DeleteGui.Items.Cancel.Slot", 15), cancelItem.toItemStack());
 
         player.openInventory(inventory);
         ConfigUtil.playSound(player, "GuiSounds.OpenSound");

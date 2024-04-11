@@ -3,7 +3,6 @@ package net.vertrauterdavid.homes.listener;
 import net.vertrauterdavid.homes.Homes;
 import net.vertrauterdavid.homes.util.ConfigUtil;
 import net.vertrauterdavid.homes.util.TeleportUtil;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -64,12 +63,12 @@ public class InventoryClickListener implements Listener {
 
             try {
                 int home = Integer.parseInt(view.getTitle().substring(view.getTitle().length() - 1));
-                if (event.getRawSlot() == 3 + (inventory.getSize() == 27 ? 9 : 18)) {
+                if (event.getRawSlot() == Homes.getInstance().getConfig().getInt("DeleteGui.Items.Confirm.Slot", 13)) {
                     Homes.getInstance().getHomeUtil().delete(player.getUniqueId(), home);
                     Homes.getInstance().openInventory(player);
                     player.sendMessage(ConfigUtil.getPrefix() + ConfigUtil.getMessage("Messages.Delete"));
                     ConfigUtil.playSound(player, "GuiSounds.SuccessSound");
-                } else if (event.getRawSlot() == 5 + (inventory.getSize() == 27 ? 9 : 18)) {
+                } else if (event.getRawSlot() == Homes.getInstance().getConfig().getInt("DeleteGui.Items.Cancel.Slot", 15)) {
                     Homes.getInstance().openInventory(player);
                 }
             } catch (NumberFormatException ignored) { }
