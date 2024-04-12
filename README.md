@@ -18,6 +18,13 @@
 
 <hr>
 
+### Future updates
+- SQLite Support
+- Placeholder Support
+- More GUI config options
+
+<hr>
+
 <details>
     <summary><h3 style="display: inline;">Screenshots</h3></summary>
     <img alt="1" width="60%" src="https://vertrauterdavid.net/assets/images/projects/homes/1.png">
