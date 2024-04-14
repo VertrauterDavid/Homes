@@ -57,16 +57,16 @@
 <details>
     <summary><h3 style="display: inline;">Permissions</h3></summary>
 
-| Permissions   |                                                   |
-|---------------|:--------------------------------------------------|
-| `home.1`      | 1 Home                                            |
-| `home.2`      | 2 Home                                            |
-| `home.3`      | 3 Home                                            |
-| `home.4`      | 4 Home                                            |
-| `home.5`      | 5 Home                                            |
-| `home.6`      | 6 Home                                            |
-| `home.7`      | 7 Home                                            |
-| `home.bypass` | Bypass cooldown                                   |
-| `home.admin`  | Permission for `/homes <player>` `/home <player>` |
+| Permissions    |                                                   |
+|----------------|:--------------------------------------------------|
+| `homes.1`      | 1 Home                                            |
+| `homes.2`      | 2 Home                                            |
+| `homes.3`      | 3 Home                                            |
+| `homes.4`      | 4 Home                                            |
+| `homes.5`      | 5 Home                                            |
+| `homes.6`      | 6 Home                                            |
+| `homes.7`      | 7 Home                                            |
+| `homes.bypass` | Bypass cooldown                                   |
+| `homes.admin`  | Permission for `/homes <player>` `/home <player>` |
 
 </details>

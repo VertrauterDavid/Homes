@@ -77,7 +77,7 @@ public class HomeCommand implements CommandExecutor, TabCompleter {
             }
         }
 
-        if (player.hasPermission("home.admin") && (args.length == 2 || args.length == 3)) {
+        if (player.hasPermission("homes.admin") && (args.length == 2 || args.length == 3)) {
             UUID target = Bukkit.getPlayerUniqueId(args[0]);
             if (target == null) {
                 player.sendMessage(ConfigUtil.getPrefix() + "§cPlayer was not found!");
@@ -133,7 +133,7 @@ public class HomeCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(ConfigUtil.getPrefix() + "Usage: §c/home set <1-" + Homes.getInstance().getAmount(player) + ">");
         player.sendMessage(ConfigUtil.getPrefix() + "Usage: §c/home delete <1-" + Homes.getInstance().getAmount(player) + ">");
         player.sendMessage(ConfigUtil.getPrefix() + "Usage: §c/home remove <1-" + Homes.getInstance().getAmount(player) + ">");
-        if (player.hasPermission("home.admin")) {
+        if (player.hasPermission("homes.admin")) {
             player.sendMessage(" ");
             player.sendMessage(ConfigUtil.getPrefix() + "Usage: §c/home <player> <1-" + Homes.getInstance().getConfig().getInt("Settings.MaxHomes", 5) + ">");
             player.sendMessage(ConfigUtil.getPrefix() + "Usage: §c/home <player> set <1-" + Homes.getInstance().getConfig().getInt("Settings.MaxHomes", 5) + ">");
@@ -178,7 +178,7 @@ public class HomeCommand implements CommandExecutor, TabCompleter {
                         list.add(i + "");
                     }
                 }
-            } else if (player.hasPermission("home.admin")) {
+            } else if (player.hasPermission("homes.admin")) {
                 list.add("set");
                 list.add("delete");
                 list.add("remove");
@@ -190,7 +190,7 @@ public class HomeCommand implements CommandExecutor, TabCompleter {
             list.add("delete");
             list.add("remove");
 
-            if (player.hasPermission("home.admin")) {
+            if (player.hasPermission("homes.admin")) {
                 list.addAll(Bukkit.getOnlinePlayers().stream().map(Player::getName).toList());
             }
 
