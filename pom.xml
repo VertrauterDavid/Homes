@@ -6,7 +6,7 @@
 
     <groupId>net.vertrauterdavid.homes</groupId>
     <artifactId>Homes</artifactId>
-    <version>1.3</version>
+    <version>1.5</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

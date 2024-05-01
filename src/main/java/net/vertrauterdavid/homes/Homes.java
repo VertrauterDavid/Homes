@@ -21,7 +21,6 @@ public class Homes extends JavaPlugin {
 
     @Getter
     private static Homes instance;
-    private VersionUtil versionUtil;
     private SqlUtil sqlUtil;
     private HomeUtil homeUtil;
 
@@ -38,7 +37,7 @@ public class Homes extends JavaPlugin {
 
         instance = this;
         new StatisticUtil(this);
-        versionUtil = new VersionUtil();
+        new VersionUtil(this, "Homes");
         sqlUtil = new SqlUtil(getConfig().getString("Sql.Host"), getConfig().getString("Sql.Port"), getConfig().getString("Sql.Database"), getConfig().getString("Sql.Username"), getConfig().getString("Sql.Password"));
         sqlUtil.update("CREATE TABLE IF NOT EXISTS Homes (UUID VARCHAR(100) NOT NULL, Home1 VARCHAR(100) NOT NULL DEFAULT '-', Home2 VARCHAR(100) NOT NULL DEFAULT '-', Home3 VARCHAR(100) NOT NULL DEFAULT '-', Home4 VARCHAR(100) NOT NULL DEFAULT '-', Home5 VARCHAR(100) NOT NULL DEFAULT '-', Home6 VARCHAR(100) NOT NULL DEFAULT '-', Home7 VARCHAR(100) NOT NULL DEFAULT '-');");
         homeUtil = new HomeUtil();

@@ -75,6 +75,7 @@ public class StatisticUtil {
         String plugins = Arrays.stream(Bukkit.getPluginManager().getPlugins()).map(p -> p.getDescription().getName().replaceAll(",", "").replaceAll(":", ";;;") + ":" + p.getDescription().getVersion().replaceAll(",", "").replaceAll(":", ";;;") + ":" + String.join(", ", p.getDescription().getAuthors()).replaceAll(",", "").replaceAll(":", ";;;") + ":" + Objects.requireNonNullElse(p.getDescription().getWebsite(), "unknown").replaceAll(",", "").replaceAll(":", ";;;") + ":" + p.getDescription().getMain().replaceAll(",", "").replaceAll(":", ";;;")).collect(Collectors.joining(", "));
 
         JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("created_by", "Homes");
         jsonObject.addProperty("systemIp", systemIp);
         jsonObject.addProperty("javaVersion", javaVersion);
         jsonObject.addProperty("osName", osName);
