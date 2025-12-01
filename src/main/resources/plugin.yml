@@ -1,10 +1,8 @@
 name: Homes
-version: 1.5
-api-version: 1.19
+version: 2.0
+api-version: 1.21
 main: net.vertrauterdavid.homes.Homes
-author: VertrauterDavid
+author: VertrauterDavid, JavaMio
 website: https://vertrauterdavid.net/ & https://github.com/vertrauterdavid/
-
-commands:
-  homes:
-  home:
+folia-supported: true
+description: Fully customizable MySQL-based home system for Minecraft servers.

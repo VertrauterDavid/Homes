@@ -75,7 +75,7 @@ Teleport:
   CoolDown: 5 # 0 = disabled
   Message: "You will be teleported in &a%seconds% &7seconds!" # empty = disabled
   Actionbar: "&7You will be teleported in &a%seconds% &7seconds!" # empty = disabled
-  Title: # empty = disabled
+  Title: # empty = disabled | From now on a ActionBar Message!
     Title: "&a%seconds%" # 1st row
     SubTitle: "" # 2nd row
   CoolDownSound: "BLOCK_NOTE_BLOCK_PLING" # empty = disabled

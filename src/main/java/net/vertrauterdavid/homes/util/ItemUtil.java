@@ -1,50 +1,36 @@
 package net.vertrauterdavid.homes.util;
 
-import org.bukkit.Material;
+import lombok.experimental.UtilityClass;
+import net.vertrauterdavid.homes.Homes;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Objects;
 
+@UtilityClass
 public class ItemUtil {
 
-    private final ItemStack item;
-
-    public ItemUtil(Material material) {
-        this.item = new ItemStack(material);
+    public ItemStack getSetItem(int home) {
+        return Homes.getInstance().getSetItem().clone()
+                .name(Objects.requireNonNull(Homes.getInstance().getConfig().getString("Gui.Items.Set.Name")).replace("%home%", String.valueOf(home)))
+                .build();
     }
 
-    public ItemUtil(ItemUtil item) {
-        this.item = item.toItemStack().clone();
+    public ItemStack getUnSetItem(int home) {
+        return Homes.getInstance().getUnSetItem().clone()
+                .name(Objects.requireNonNull(Homes.getInstance().getConfig().getString("Gui.Items.UnSet.Name")).replace("%home%", String.valueOf(home)))
+                .build();
     }
 
-    public ItemUtil setName(String name) {
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(name);
-        item.setItemMeta(meta);
-        return this;
+    public ItemStack getNoPermissionItem(int home) {
+        return Homes.getInstance().getNoPermissionItem().clone()
+                .name(Objects.requireNonNull(Homes.getInstance().getConfig().getString("Gui.Items.NoPermission.Name")).replace("%home%", String.valueOf(home)))
+                .build();
     }
 
-    public ItemUtil setLore(String... lore) {
-        setLore(Arrays.asList(lore));
-        return this;
-    }
-
-    public ItemUtil setLore(List<String> lore) {
-        if (lore.isEmpty()) return this;
-        ItemMeta meta = item.getItemMeta();
-        meta.setLore(lore);
-        item.setItemMeta(meta);
-        return this;
-    }
-
-    public ItemStack toItemStack() {
-        return item;
-    }
-
-    public ItemMeta getItemMeta() {
-        return item.getItemMeta();
+    public ItemStack getBedItem(int home) {
+        return Homes.getInstance().getBedItem().clone()
+                .name(Objects.requireNonNull(Homes.getInstance().getConfig().getString("DeleteGui.Items.Bed.Name")).replace("%home%", String.valueOf(home)))
+                .build();
     }
 
 }
